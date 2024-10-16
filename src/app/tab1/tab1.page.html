@@ -1,17 +1,97 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Dashboard
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+
+
+
+<ion-content class="ion-padding" >
+
+  <div class="grid-container">
+
+    <div class="grid-item">
+<!-- Display Current Weather in a Futuristic Circular Dashboard -->
+<div *ngIf="currentWeather.current" class="weather-circle">
+  <!-- Time and Date in the top arc -->
+  <div class="top-arc">
+    <span>{{ currentTime }}</span>
+    <br>
+    <span>{{ currentDate }}</span>
+  </div>
+
+  <!-- Temperature in the center -->
+  <div class="center">
+    <span>{{ currentWeather.current.temperature2m | number:'1.2-2' }}°F</span>
+  </div>
+
+  <!-- Humidity in the bottom-left arc -->
+  <div class="bottom-left-arc">
+    <span><i class="icon-humidity"></i> {{ currentWeather.current.relativeHumidity2m }}% Humidity</span>
+  </div>
+
+  <!-- Precipitation in the bottom-right arc -->
+  <div class="bottom-right-arc">
+    <span><i class="icon-precipitation"></i> {{ currentWeather.current.precipitation }}% Precipitation</span>
+  </div>
+</div>
+</div>
+
+<div class="grid-item">
+
+  <!-- Control Buttons for Bed Lamp 1, Bed Lamp 2, and Desk Lamp -->
+  <div class="lamp-controls">
+    <ion-button
+      class="lamp-button"
+      (click)="toggleDevice(deviceIds[0])"
+      [color]="currentStates[deviceIds[0]] === 'On' ? 'success' : 'danger'">
+      Bed Lamp 1
+    </ion-button>
+  
+    <ion-button
+      class="lamp-button"
+      (click)="toggleDevice(deviceIds[1])"
+      [color]="currentStates[deviceIds[1]] === 'On' ? 'success' : 'danger'">
+      Bed Lamp 2
+    </ion-button>
+  
+    <ion-button
+      class="lamp-button"
+      (click)="toggleDevice(deviceIds[2])"
+      [color]="currentStates[deviceIds[2]] === 'On' ? 'success' : 'danger'">
+      Desk Lamp
+    </ion-button>
+  </div>
+  
+</div>
+</div>
+
+  <!-- Display Next 6 Days Weather -->
+  <div *ngIf="nextDaysWeather.daily">
+    <h2 style="color: white; ;">Next 6 Days Forecast</h2>
+    <div class="forecast-container">
+      <div *ngFor="let day of nextDaysWeather.daily.time; let i = index" class="forecast-item">
+        <p class="forecast-date"><strong>{{ day | date: 'EEE, MMM d' }}</strong></p>
+        <p class="forecast-temp">Max: {{ nextDaysWeather.daily.temperature2mMax[i] | number:'1.2-2' }}°F</p>
+        <p class="forecast-temp">Min: {{ nextDaysWeather.daily.temperature2mMin[i] | number:'1.2-2' }}°F</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <p>Loading weather data...</p>
+  </ng-template>
+
+  <!-- Control Buttons -->
+  <!-- Toggle for Device 1 -->
+ <!-- Control Buttons -->
+
+
+
+
+
 </ion-content>

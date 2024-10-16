@@ -1,0 +1,141 @@
+/* Styles for current weather */
+
+ion-content {
+    --background: none; /* Override Ionic's default background */
+  
+    background: url('../../assets/weatherimage.webp') center/cover no-repeat; /* Image background */
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+  }
+  
+.current-weather-container {
+    background-color: #f0f8ff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .current-item p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+  }
+  
+  .current-temp {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ff4500;
+  }
+  
+  .current-humidity, .current-precipitation {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  /* Styles for 6-day forecast */
+  .forecast-container {
+    display: flex;
+    overflow-x: scroll;
+    padding-bottom: 10px;
+  }
+  
+  .forecast-item {
+    flex: 0 0 160px;
+    background-color: #e0f7fa;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .forecast-date {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .forecast-temp {
+    font-size: 1.1rem;
+  }
+  
+  /* Styles for buttons */
+  .button-group ion-button {
+    margin-top: 10px;
+  }
+
+  .weather-circle {
+    background: radial-gradient(circle, rgba(0, 123, 255, 0.7), rgba(0, 0, 128, 0.7));
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  
+  .top-arc {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .center {
+    font-size: 50px;
+    font-weight: bold;
+  }
+  
+  .bottom-left-arc,
+  .bottom-right-arc {
+    position: absolute;
+    bottom: 40px;
+    font-size: 14px;
+  }
+  
+  .bottom-left-arc {
+    left: 50px;
+    bottom: 80px;
+  }
+  
+  .bottom-right-arc {
+    right: 50px;
+    bottom: 80px;
+  }
+  
+  .icon-humidity, .icon-precipitation {
+    margin-right: 5px;
+    /* You can replace this with a weather-related icon or font icon */
+  }
+  .lamp-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Add spacing between the buttons */
+  }
+  .lamp-button {
+    width: 150px;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+      transform: translateY(-3px); /* Slight lift effect on hover */
+    }
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns for circle and controls */
+    gap: 20px; /* Space between the grid items */
+    justify-items: center; /* Center the items in each grid cell */
+    align-items: center; /* Vertically align the items */
+  }
+  
